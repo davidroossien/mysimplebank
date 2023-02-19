@@ -4,12 +4,12 @@
 
 ## Local go development workspace setup
 1. I use a mac with brew. 
-1. This uses both a go workspace and go modules.
 1. My .bashrc contains:
     1. #for go
     1. export PATH="${PATH}:~/usr/local/opt"
     1. export GO111MODULE=on
     1. export PATH=${PATH}:`go env GOPATH`/bin
+1. This project uses both a go workspace and go modules.
 
 ## Prerequisites
 1. Run "brew install golang-migrate"
