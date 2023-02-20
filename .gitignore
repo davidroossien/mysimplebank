@@ -1,4 +1,3 @@
 .vscode
-app.env
 go.sum
 go.work.sum
