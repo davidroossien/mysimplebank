@@ -1,6 +1,6 @@
 # Backend Master Class [Golang + Postgres + Kubernetes + gRPC]
 
-* https://okta.udemy.com/course/backend-master-class-golang-postgresql-kubernetes
+* https://www.udemy.com/course/backend-master-class-golang-postgresql-kubernetes/
 
 ## Local go development workspace setup
 1. I use a mac with brew. 
@@ -15,7 +15,6 @@
 1. Run "brew install golang-migrate"
 1. Run "brew install sqlc"
 1. Install docker desktop
-1. Install postgres:12-alpine & configure as shown in the videos
 1. Lots more, see the videos
 
 ## Setup
@@ -23,12 +22,19 @@
 1. Open VSCode and open the root folder.
 1. Open a terminal.
 1. Go to the project root folder.
+1. Run "go mod tidy"
+1. Run "make postgres"
+1. Run "make createdb"
+1. Run "make migrateup"
+1. Run "make test"
+
+## Configure (for reference)
+1. Create an app.env file in the root folder and add the following:
+    1.  DB_DRIVER = "postgres"
+    1.  DB_SOURCE = "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable"
+
+## Go commands (for reference)
 1. Run "go work init"
 1. Run "go work use ."
 1. Run "go mod init"
 1. Run "go mod tidy" as needed
-
-## Configure
-1. Create an app.env file in the root folder and add the following:
-    1.  DB_DRIVER = ""
-    1.  DB_SOURCE = ""
