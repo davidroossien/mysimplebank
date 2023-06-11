@@ -1,3 +1,5 @@
 .vscode
 go.sum
 go.work.sum
+__debug_bin
+.DS_Store
