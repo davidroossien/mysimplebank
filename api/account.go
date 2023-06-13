@@ -65,7 +65,7 @@ func (server *Server) listAccounts(ctx *gin.Context) {
 
 type createAccountRequest struct {
 	Owner    string `json:"owner" binding:"required"`
-	Currency string `json:"currency" binding:"required,oneof=USD EUR"`
+	Currency string `json:"currency" binding:"required,currency"`
 }
 
 // gin uses go-playground/validator/v10
