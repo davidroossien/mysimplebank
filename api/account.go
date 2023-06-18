@@ -85,8 +85,23 @@ func (server *Server) createAccount(ctx *gin.Context) {
 		Balance:  0,
 	}
 
+	// https://go.dev/tour/methods/15
+	// Type assertions
+	// A type assertion provides access to an interface value's underlying concrete value.
+	// t := i.(T)
+	// This statement asserts that the interface value i holds the concrete type T and assigns the underlying T value to the variable t.
+	// If i does not hold a T, the statement will trigger a panic.
+	// To test whether an interface value holds a specific type, a type assertion can return two values:
+	// the underlying value and a boolean value that reports whether the assertion succeeded.
+	// t, ok := i.(T)
+	// If i holds a T, then t will be the underlying value and ok will be true.
+	// If not, ok will be false and t will be the zero value of type T, and no panic occurs.
+	// Note the similarity between this syntax and that of reading from a map.
 	account, err := server.store.CreateAccount(ctx, arg)
 	if err != nil {
+		// check if err is of type *pq.Error or not
+		// if err is of type *pq.Error, then pqErr will be assigned to err and ok set true
+		// then the ok section will be executed
 		if pqErr, ok := err.(*pq.Error); ok {
 			switch pqErr.Code.Name() {
 			case "foreign_key_violation", "unique_violation":
