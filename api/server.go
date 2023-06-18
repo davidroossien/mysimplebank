@@ -22,10 +22,10 @@ func NewServer(store db.Store) *Server {
 
 	// (route, handler) could also place middleware here
 	// handler must accept gin context
+	router.POST("/users", server.createUser)
 	router.POST("/accounts", server.createAccount)
 	router.GET("/accounts/:id", server.getAccount)
 	router.GET("/accounts", server.listAccounts)
-
 	router.POST("/transfers", server.createTransfer)
 
 	server.router = router
