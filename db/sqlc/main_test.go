@@ -6,8 +6,8 @@ import (
 	"os"
 	"testing"
 
+	"github.com/davidroossien/mysimplebank/util"
 	_ "github.com/lib/pq"
-	"github.com/techschool/simplebank/util"
 )
 
 // global variables that are available to other tests
