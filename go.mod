@@ -14,7 +14,6 @@ require (
 	github.com/o1egl/paseto v1.0.0
 	github.com/spf13/viper v1.15.0
 	github.com/stretchr/testify v1.8.3
-	github.com/techschool/simplebank v0.0.0-20230204160300-083a0926e973
 	golang.org/x/crypto v0.9.0
 )
 
