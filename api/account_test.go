@@ -19,7 +19,8 @@ import (
 )
 
 func TestGetAccountAPI(t *testing.T) {
-	account := randomAccount()
+	user, _ := randomUser(t)
+	account := randomAccount(user.Username)
 
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()
@@ -34,7 +35,7 @@ func TestGetAccountAPI(t *testing.T) {
 		Return(account, nil)
 
 	// start the test api server
-	server := NewServer(store)
+	server := newTestServer(t, store)
 
 	// create an http test recorder
 	recorder := httptest.NewRecorder()
@@ -53,7 +54,8 @@ func TestGetAccountAPI(t *testing.T) {
 }
 
 func TestAllGetAccountAPI(t *testing.T) {
-	account := randomAccount()
+	user, _ := randomUser(t)
+	account := randomAccount(user.Username)
 
 	testCases := []struct {
 		name      string
@@ -128,7 +130,7 @@ func TestAllGetAccountAPI(t *testing.T) {
 			tc.buildStubs(store)
 
 			// start the test api server
-			server := NewServer(store)
+			server := newTestServer(t, store)
 
 			// create an http test recorder
 			recorder := httptest.NewRecorder()
@@ -147,14 +149,23 @@ func TestAllGetAccountAPI(t *testing.T) {
 	}
 }
 
-func randomAccount() db.Accounts {
+func randomAccount(owner string) db.Accounts {
 	return db.Accounts{
 		ID:       util.RandomInt(1, 1000),
-		Owner:    util.RandomOwner(),
+		Owner:    owner,
 		Balance:  util.RandomMoney(),
 		Currency: util.RandomCurrency(),
 	}
 }
+
+// func randomAccount() db.Accounts {
+// 	return db.Accounts{
+// 		ID:       util.RandomInt(1, 1000),
+// 		Owner:    util.RandomOwner(),
+// 		Balance:  util.RandomMoney(),
+// 		Currency: util.RandomCurrency(),
+// 	}
+// }
 
 func requireBodyMatchAccount(t *testing.T, body *bytes.Buffer, account db.Accounts) {
 	data, err := ioutil.ReadAll(body)
