@@ -10,7 +10,7 @@
     1. export GO111MODULE=on
     1. export PATH=${PATH}:`go env GOPATH`/bin
 1. This project uses both a go workspace and go modules.
-1. If on an older version that 1.19, then
+1. If on an older version than 1.19, then
     1. run "brew upgrade go"
     1. run "brew reinstall go"
     1. restart VSCode
