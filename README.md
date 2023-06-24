@@ -3,13 +3,18 @@
 * https://www.udemy.com/course/backend-master-class-golang-postgresql-kubernetes/
 
 ## Local go development workspace setup
-1. I use a mac with brew. 
+1. I use a mac with brew.
 1. My .bashrc contains:
     1. #for go
     1. export PATH="${PATH}:~/usr/local/opt"
     1. export GO111MODULE=on
     1. export PATH=${PATH}:`go env GOPATH`/bin
 1. This project uses both a go workspace and go modules.
+1. If on an older version that 1.19, then
+    1. run "brew upgrade go"
+    1. run "brew reinstall go"
+    1. restart VSCode
+    1. go mod tidy
 
 ## Prerequisites
 1. Run "brew install golang-migrate"

@@ -94,7 +94,7 @@ func TestListAccounts(t *testing.T) {
 	arg := ListAccountsParams{
 		Owner:  lastAccount.Owner,
 		Limit:  5,
-		Offset: 0,
+		Offset: 0, // last accounts we just created
 	}
 
 	accounts, err := testQueries.ListAccounts(context.Background(), arg)
