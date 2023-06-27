@@ -33,6 +33,8 @@
 1. Run "make migrateup"
 1. Run "make test"
 
+
+
 ## Configure (for reference)
 1. Create an app.env file in the root folder and add the following:
     1.  DB_DRIVER = "postgres"
